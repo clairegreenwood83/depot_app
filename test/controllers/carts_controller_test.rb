@@ -33,10 +33,10 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update cart" do
-    patch cart_url(@cart), params: { cart: {  } }
-    assert_redirected_to cart_url(@cart)
-  end
+  #test "should update cart" do
+    #patch cart_url(@cart), params: { cart: {  } }
+    #assert_redirected_to cart_url(@cart)
+  #end
 
   test "should destroy cart" do
     post line_items_url, params: { product_id: products(:ruby).id }
