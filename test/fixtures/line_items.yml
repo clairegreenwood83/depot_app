@@ -3,9 +3,11 @@
 one:
   product: two
   cart: one
+  product_id: 1
   
 
 two:
   product: ruby
   order: one
+  product_id: 2
   
