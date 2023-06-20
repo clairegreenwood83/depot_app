@@ -62,12 +62,22 @@ class LineItemsController < ApplicationController
 
   def decrease_quantity
     @line_item = LineItem.find(params[:id])
-    @line_item.decrement!(:quantity)
-
-    respond_to do |format|
-      format.html { redirect_to cart_path, notice: 'Quantity decreased.' }
-      format.json { render json: @line_item, status: :ok }
+    
+    if @line_item.quantity > 1
+      @line_item.decrement!(:quantity)
+      respond_to do |format|
+        format.html { redirect_to cart_path, notice: 'Quantity decreased.' }
+        format.json { render json: @line_item, status: :ok }
+      end
+    else
+      @line_item.destroy
+      respond_to do |format|
+        format.html { redirect_to store_index_url, notice: 'Your cart is currently empty' }
+        format.json { render json: @line_item, status: :ok }
+      end
     end
+
+    
   end
 
   private
