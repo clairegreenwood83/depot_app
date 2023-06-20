@@ -60,6 +60,16 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def decrease_quantity
+    @line_item = LineItem.find(params[:id])
+    @line_item.decrement!(:quantity)
+
+    respond_to do |format|
+      format.html { redirect_to cart_path, notice: 'Quantity decreased.' }
+      format.json { render json: @line_item, status: :ok }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
