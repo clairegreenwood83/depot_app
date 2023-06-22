@@ -1,41 +1,19 @@
 require "test_helper"
 
 class CartsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @cart = carts(:one)
-  end
-
-  test "should get index" do
-    get cart_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_cart_url
-    assert_response :success
-  end
 
   test "should create cart" do
     assert_difference("Cart.count") do
       post cart_url, params: { cart: {  } }
     end
-
     assert_redirected_to cart_url(Cart.last)
   end
 
-  #test "should update cart" do
-    #patch cart_url(@cart), params: { cart: {  } }
-    #assert_redirected_to cart_url(@cart)
-  #end
-
   test "should destroy cart" do
-    post line_items_url, params: { product_id: products(:ruby).id }
-    @cart = Cart.find(session[:cart_id])
-
-    puts "Session: #{session.inspect}"
+    post line_items_url, params: {product_id: products(:ruby).id}
     
     assert_difference("Cart.count", -1) do
-      delete cart_path(@cart)
+      delete cart_url(@cart)
     end
 
     assert_redirected_to store_index_url

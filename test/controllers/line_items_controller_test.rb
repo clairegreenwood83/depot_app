@@ -45,7 +45,17 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("LineItem.count", -1) do
       delete line_item_url(@line_item)
     end
+    assert_redirected_to store_index_url
+  end
 
-    assert_redirected_to cart_url
+  test "decrease_quantity reduces the quantity of line_items by 1" do
+    product1 = (products(:one))
+    @cart = Cart.create
+    @line_item = LineItem.new(product: product1, quantity: 2, cart: @cart)
+
+    assert_difference("LineItem.count", -1) do
+      patch decrease_quantity_line_item_path(@line_item)
+    end
+    assert_redirected_to cart_path(@cart)
   end
 end

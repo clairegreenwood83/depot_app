@@ -55,7 +55,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to cart_url(@line_item.cart), notice: "Line item was successfully deleted." }
+      format.html { redirect_to store_index_url, notice: "Line item was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -66,7 +66,7 @@ class LineItemsController < ApplicationController
     if @line_item.quantity > 1
       @line_item.decrement!(:quantity)
       respond_to do |format|
-        format.html { redirect_to cart_path, notice: 'Quantity decreased.' }
+        format.html { redirect_to store_index_url, notice: 'Quantity decreased.' }
         format.json { render json: @line_item, status: :ok }
       end
     else
@@ -76,8 +76,6 @@ class LineItemsController < ApplicationController
         format.json { render json: @line_item, status: :ok }
       end
     end
-
-    
   end
 
   private
