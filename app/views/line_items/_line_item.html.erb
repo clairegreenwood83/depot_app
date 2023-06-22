@@ -8,6 +8,6 @@
     <%= number_to_currency(line_item.total_price) %>
   </td>
   <td>
-  <%= button_to '-', decrease_quantity_line_item_path(line_item), method: :patch, class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600', form: { data: { turbo_confirm: 'Are you sure you want to delete this item?' } } %>
+  <%= button_to '-', decrease_quantity_line_item_url(line_item), method: :patch, class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600', form: { data: { turbo_confirm: 'Are you sure you want to delete this item?' } } %>
   </td>
 </tr>
