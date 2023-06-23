@@ -12,10 +12,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <header class="bg-green-700">
-      <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
-      <h1><%= @page_title %></h1>
+  <body class="min-h-screen">
+    <header class="flex justify-between w-full px-2">
+      <div>
+        <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+        <h1><%= @page_title %></h1>
+      </div>
+      <div class="mt-8">
+          <%= button_to 'User Login',
+              login_url,
+              form_class: 'inline',
+              class: "rounded-lg py-1 px-2 text-white bg-green-600 ml-2" %>
+      </div>
     </header>
 
     <section class="flex">
