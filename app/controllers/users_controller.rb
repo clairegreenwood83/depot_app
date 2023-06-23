@@ -36,6 +36,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    user_params = params.require(:user).permit(:password, :password_confirmation)
+    
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
