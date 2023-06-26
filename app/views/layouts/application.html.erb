@@ -13,18 +13,28 @@
   </head>
 
   <body class="min-h-screen">
-    <header class="flex justify-between w-full px-2">
+    <header class="bg-green-700 flex justify-between w-full px-2">
       <div>
         <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
         <h1><%= @page_title %></h1>
       </div>
+      <% if session[:user_id] %>
       <div class="mt-8">
-          <%= button_to 'User Login',
-              login_url,
-              form_class: 'inline',
-              class: "rounded-lg py-1 px-2 text-white bg-green-600 ml-2" %>
+         <%= button_to 'Logout',
+             logout_path,
+             method: :delete,
+             form_class: 'inline',
+             class: "rounded-lg py-1 px-2 text-white bg-blue-600 ml-2" %>
       </div>
-    </header>
+      <% else %>
+      <div class="mt-8">
+        <%= button_to 'Login', 
+            login_path,
+            form_class: 'inline',
+            class: "rounded-lg py-1 px-2 text-white bg-blue-600 ml-2" %>
+      </div>
+      <% end %>
+  </header>
 
     <section class="flex">
       <nav class="bg-green-900 p-6">
@@ -36,8 +46,6 @@
 
         <ul class="text-gray-300 leading-8">
           <li><a href="/">Home</a></li>
-          <li><a href="/questions">Questions</a></li>
-          <li><a href="/news">News</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
 
