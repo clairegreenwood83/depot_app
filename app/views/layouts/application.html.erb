@@ -34,10 +34,10 @@
             class: "rounded-lg py-1 px-2 text-white bg-blue-600 ml-2" %>
       </div>
       <% end %>
-  </header>
+    </header>
 
-    <section class="flex">
-      <nav class="bg-green-900 p-6">
+    <section class="flex h-full">
+      <nav class="bg-green-900 p-6 h-full">
         <% if @cart and not @cart.line_items.empty? %>
           <div id="cart" class="bg-white rounded p-2">
            <%= render @cart %>
