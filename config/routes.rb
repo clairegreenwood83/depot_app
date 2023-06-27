@@ -5,8 +5,12 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
- # get 'sessions/create'
- # get 'sessions/destroy'
+  get 'sessions/create'
+  get 'sessions/destroy'
+
+  # START_HIGHLIGHT
+  resources :support_requests, only: %i[index update]
+  # END_HIGHLIGHT
   resources :users
   resources :orders
   resources :line_items do
@@ -15,8 +19,10 @@ Rails.application.routes.draw do
     end 
   end
   resource :cart, only: [:show, :create, :update, :destroy]
-  root 'store#index', as: 'store_index'
-  resources :products
+  root 'store#index', as: 'store_index', via: :all
+  resources :products do 
+    get :who_bought, on: :memeber
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
