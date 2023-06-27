@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: %i[ create ]
   before_action :set_line_item, only: %i[ show edit update destroy ]
-  skip_before_action :authorize, only: %i[create]
+  skip_before_action :authorize
 
   # GET /line_items or /line_items.json
   def index
@@ -29,6 +29,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
+        format.turbo_stream 
         format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
       else
