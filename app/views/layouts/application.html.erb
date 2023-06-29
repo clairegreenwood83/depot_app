@@ -24,7 +24,7 @@
              logout_path,
              method: :delete,
              form_class: 'inline',
-             class: "rounded-lg py-1 px-2 text-white bg-orange-600 ml-2" %>
+             class: "rounded-lg py-1 px-2 text-white bg-red-600 ml-2" %>
       </div>
       <% else %>
       <div class="mt-8">
@@ -53,6 +53,7 @@
             <li><%= link_to 'Products', products_path %></li>
             <li><%= link_to 'Users', users_path %></li>
             <li><%= button_to 'Logout', logout_path, method: :delete %></li>
+            <li><%= link_to 'Support', support_requests_path %></li>
           </ul>
         <% end %>
       </nav>

@@ -59,7 +59,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.assets.prefix = "/dev-assets"
+  # config.assets.prefix = "/dev-assets"
 
 
   # Raises error for missing translations.

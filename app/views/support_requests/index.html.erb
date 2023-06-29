@@ -1,45 +1,52 @@
-<ul>
+
+<ul role="list" class="space-y-3">
   <% @support_requests.each do |support_request| %>
-    <li>
-      <h1 class="font-bold text-xl mb-6 p-4">
+    <li class="overflow-hidden rounded-md bg-white px-6 py-4 shadow-md">
+      <div class="px-4 sm:px-0">
+      <h1 class="text-lg font-semibold leading-7 text-gray-900">
         On <%= support_request.created_at.to_formatted_s(:long) %>
         <code><%= support_request.email %></code> writes:
       </h1>
-      <p>
-        <blockquote>
-          <h2 class="text-lg mb-3 font-bold"><%= support_request.subject %></h2>
-          <%= support_request.body %>
-        </blockquote>
-      </p>
+      <div class="mt-1 mb-1 max-w-2xl text-sm leading-6 text-gray-500">
+          <h2 class="bg-gray-100 border-l-4 p-4 mt-2 font-bold"><%= support_request.subject %></h2>
+          <p class="bg-gray-100 border-l-4 p-4"><%= support_request.body %></p>
+      </div>
+      </div>
       <% if support_request.order %>
-        <h3>Recent Order</h3>
-        <dl class="p-4">
-          <dt class="pt-2">Name</dt>
-          <dd><%= support_request.order.name %></dd>
-
-          <dt class="pt-2">Email</dt>
-          <dd><%= support_request.order.email %></dd>
-
-          <dt class="pt-2">Address</dt>
-          <dd><%= support_request.order.address %></dd>
-
-          <dt class="pt-2">PayType</dt>
-          <dd><%= support_request.order.pay_type %></dd>
-
-          <dt class="pt-2">Line Items</dt>
-          <dd>
-            <ul>
+        <h3 class="text-lg mt-4">Recent Order:</h3>
+        <div class="mt-6 border-t border-gray-100">
+        <dl class="divide-y divide-gray-100">
+          <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Name</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= support_request.order.name %></dd>
+          </div>
+          <div class="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Email</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= support_request.order.email %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Address</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= support_request.order.address %></dd>
+          </div>
+          <div class="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
+            <dt class="text-sm font-medium leading-6 text-gray-900">PayType</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" ><%= support_request.order.pay_type %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Line Items</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <% support_request.order.line_items.each do |line_item| %>
                 <li class="p-2">
                   <%= line_item.product.title %>
                   (<%= line_item.product.price %>)
                 </li>
               <% end %>
-            </ul>
-          </dd>
+            </dd>
+          </div>
         </dl>
+        </div>
       <% else %>
-        <div class="notice border border-solid p-4">
+        <div class="text-center bg-blue-100 border-blue-500 text-blue-700 p-4 mt-3">
           <h3>No associated order</h3>
         </div>
       <% end %>
@@ -54,12 +61,10 @@
           </div>
         <% end %>
       <% else %>
-        <h4> Our Response </h4>
-        <p>
-          <blockquote>
+        <h4 class="text-lg mt-5 mb-3"> Our Response: </h4>
+        <div class="text-sm bg-gray-100 border-l-4 p-4">
             <%= support_request.response %>
-          </blockquote>
-        </p>
+        </div>
       <% end %>
       <hr>
     </li>
