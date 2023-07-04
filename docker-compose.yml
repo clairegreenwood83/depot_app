@@ -12,13 +12,14 @@ services:
     build: .
     volumes:
       - ./log:/home/app/depot/log
-      - ./config/master.key:/home/app/depot/config/master.key:ro
-    environment:
-      - RAILS_MASTER_KEY=/home/app/depot/config/master.key
+    secrets:
+      - source: master_key
+        target: /home/app/depot/config/master.key
     ports:
       - "8001:80"
     depends_on:
       - db
+    
 
 secrets:
   master_key:

@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:2.2.0
+FROM phusion/passenger-full:2.4.0
 
 RUN rm /etc/nginx/sites-enabled/default
 RUN rm -f /etc/service/nginx/down
@@ -16,7 +16,7 @@ RUN bundle install
 COPY --chown=app:app . .
 
 RUN SECRET_KEY_BASE=`bin/rails secret` \
-   bin/rails assets:precompile
+  bin/rails assets:precompile
 
 USER root
 CMD ["/sbin/my_init"]
