@@ -1,4 +1,9 @@
-FROM phusion/passenger-full:2.4.0
+FROM phusion/passenger-full
+
+ENV BUNDLER_VERSION=2.4.15
+ENV RUBY_VERSION=3.1.3
+
+RUN mkdir -p /var/run/passenger-instreg
 
 RUN rm /etc/nginx/sites-enabled/default
 RUN rm -f /etc/service/nginx/down
