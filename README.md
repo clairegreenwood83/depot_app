@@ -1,6 +1,6 @@
 # Depot Application
 
-## Drescription
+## Description
 This is a web based shopping cart application called Depot. I have built this application incrementally, through completing the tasks in the book 'Agile Web Development with Rails 7', in order to improve my knowledge and understanding of both Ruby and Ruby on Rails.
 
 The homepage of this application can be seen in the image below:
