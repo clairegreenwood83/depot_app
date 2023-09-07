@@ -14,12 +14,14 @@ Once you have cloned the repository to your system, follow these steps to open a
 
 ### Prerequisites
 
-Ensure you have the necessary dependencies installed.
+*Still to be added*
 
 ### Launching the Application
 1. Navigate to the root directory of the cloned repository using your terminal.
-2. Run the following command to start the application: bin/dev
-3. Once the command completes the application should be running and accessible in your web browser. Simply open your preferred web browser and navigate to http://localhost:3000, this 
+2. To use Docker to build the image for the web service run: docker compose build
+3. To start the Docker database and web containers run the following command: docker compose up
+4. To create the database, run the migrations and load the seed data run: docker compose exec web bin/rails db:create db:migrate db:seed
+5. Once the command completes the application should be running and accessible in your web browser. Simply open your preferred web browser and navigate to http://localhost:8001/, this 
    will take you to the homepage of the application. 
 
 ## Deployment
